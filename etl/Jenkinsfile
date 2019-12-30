@@ -1,12 +1,12 @@
 currentBuild.displayName = "#${currentBuild.number}-etl-${params.appEnv}"
-parameters {
-  choice choices: ['card', 'arc', 'swop'], description: 'Choose the Job to Deploy', name: 'talendJob'
-  choice choices: ['dev', 'mirror', 'swop'], description: 'Choose the Job to Deploy', name: 'appENV'
-}
 
 pipeline{
   agent any
-  stages{
+  parameters {
+  choice choices: ['card', 'arc', 'swop'], description: 'Choose the Job to Deploy', name: 'talendJob'
+  choice choices: ['dev', 'mirror', 'swop'], description: 'Choose the Job to Deploy', name: 'appENV'
+}
+ stages{
     stage("Test"){
       steps{
         dir(params.talendJob) {
