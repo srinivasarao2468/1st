@@ -3,7 +3,7 @@ properties(
   [parameters(
     [
       string(
-      defaultValue: 'etl',
+      defaultValue: '/card',
       description: 'Name of directory to run',
       name: 'DirName'
       ),
