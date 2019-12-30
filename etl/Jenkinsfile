@@ -27,7 +27,7 @@ pipeline{
       steps{
         dir(params.appEnv) {
           sh """
-          echo "1st build ${DirName}"
+          echo "1st build params.appEnv"
           pwd
           """
         }
