@@ -25,9 +25,9 @@ pipeline{
   stages{
     stage("Test"){
       steps{
-        dir(params.appEnv) {
+        dir(params.DirName) {
           sh """
-          echo "1st build ${params.appEnv}"
+          echo "1st build ${params.DirName}"
           pwd
           """
         }
