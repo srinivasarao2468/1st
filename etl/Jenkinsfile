@@ -1,0 +1,37 @@
+currentBuild.displayName = "#${currentBuild.number}-etl-${params.appEnv}"
+properties(
+  [parameters(
+    [
+      string(
+      defaultValue: 'card',
+      description: 'Name of directory to run',
+      name: 'DirName'
+      ),
+      string(
+      description: 'Choose Docker ECR URL to deploy',
+      name: 'ecrURL'
+      ),
+      choice(
+      choices: ['dev', 'itg', 'mirroritg', 'mirror', 'prod'],
+      description: 'environments', name: 'appEnv')
+
+    ])
+  ]
+)
+
+
+pipeline{
+  agent any
+  stages{
+    stage{
+      step{
+        dir("${DirName}"){
+          sh """
+          echo "1st build ${DirName}"
+          pwd
+          """
+        }
+      }
+    }
+  }
+}
