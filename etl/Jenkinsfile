@@ -1,33 +1,17 @@
 currentBuild.displayName = "#${currentBuild.number}-etl-${params.appEnv}"
-properties(
-  [parameters(
-    [
-      string(
-      defaultValue: 'etl/card/',
-      description: 'Name of directory to run',
-      name: 'DirName'
-      ),
-      string(
-      description: 'Choose Docker ECR URL to deploy',
-      name: 'ecrURL'
-      ),
-      choice(
-      choices: ['dev', 'itg', 'mirroritg', 'mirror', 'prod'],
-      description: 'environments', name: 'appEnv')
-
-    ])
-  ]
-)
-
+parameters {
+  choice choices: ['card', 'arc', 'swop'], description: 'Choose the Job to Deploy', name: 'talendJob'
+  choice choices: ['dev', 'mirror', 'swop'], description: 'Choose the Job to Deploy', name: 'appENV'
+}
 
 pipeline{
   agent any
   stages{
     stage("Test"){
       steps{
-        dir(params.DirName) {
+        dir(params.talendJob) {
           sh """
-          echo "1st build ${params.DirName}"
+          echo "1st build ${params.talendJob}"
           pwd
           """
         }
