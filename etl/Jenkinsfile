@@ -23,7 +23,7 @@ properties(
 pipeline{
   agent any
   stages{
-    stage(params.appEnv){
+    stage("Test"){
       steps{
         dir(params.appEnv) {
           sh """
