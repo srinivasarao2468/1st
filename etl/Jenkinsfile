@@ -23,9 +23,9 @@ properties(
 pipeline{
   agent any
   stages{
-    stage("${DirName}"){
+    stage(params.appEnv){
       steps{
-        dir("${DirName}") {
+        dir(params.appEnv) {
           sh """
           echo "1st build ${DirName}"
           pwd
