@@ -24,7 +24,7 @@ pipeline{
   agent any
   stages{
     stage("${DirName}"){
-      step{
+      steps{
         dir("${DirName}") {
           sh """
           echo "1st build ${DirName}"
